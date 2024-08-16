@@ -22,7 +22,7 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        System.out.println("KeyTyped " + e.getKeyChar());
     }
 
     @Override
@@ -31,25 +31,11 @@ public class KeyboardInputs implements KeyListener {
 
         switch (key) {
             case KeyEvent.VK_W:
-                this.player.setMoving(true);
                 this.player.setMovingUp(true);
 
-                this.pressedKeys.add(key);
                 break;
             case KeyEvent.VK_S:
-                this.player.setMoving(true);
                 this.player.setMovingDown(true);
-                this.pressedKeys.add(key);
-                break;
-            case KeyEvent.VK_A:
-                this.player.setMoving(true);
-                this.player.setMovingLeft(true);
-                this.pressedKeys.add(key);
-                break;
-            case KeyEvent.VK_D:
-                this.player.setMoving(true);
-                this.player.setMovingRight(true);
-                this.pressedKeys.add(key);
                 break;
         }
 
@@ -65,30 +51,9 @@ public class KeyboardInputs implements KeyListener {
             case KeyEvent.VK_W:
                 this.player.setMovingUp(false);
 
-                this.pressedKeys.remove(this.pressedKeys.indexOf(key));
-
-                if (this.pressedKeys.isEmpty()) this.player.setMoving(false);
                 break;
             case KeyEvent.VK_S:
                 this.player.setMovingDown(false);
-
-                this.pressedKeys.remove(this.pressedKeys.indexOf(key));
-
-                if (this.pressedKeys.isEmpty()) this.player.setMoving(false);
-                break;
-            case KeyEvent.VK_A:
-                this.player.setMovingLeft(false);
-
-                this.pressedKeys.remove(this.pressedKeys.indexOf(key));
-
-                if (this.pressedKeys.isEmpty()) this.player.setMoving(false);
-                break;
-            case KeyEvent.VK_D:
-                this.player.setMovingRight(false);
-
-                this.pressedKeys.remove(this.pressedKeys.indexOf(key));
-
-                if (this.pressedKeys.isEmpty()) this.player.setMoving(false);
                 break;
         }
 

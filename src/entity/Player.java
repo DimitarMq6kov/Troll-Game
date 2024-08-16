@@ -40,7 +40,6 @@ public class Player extends Entity {
     }
 
     public void move() {
-        if (isMoving) {
             if (this.isSprinting && this.isMovingUp) posY -= this.movementSpeed * this.sprintSpeedMultiplayer;
             else if (isMovingUp) posY -= this.movementSpeed;
 
@@ -54,7 +53,6 @@ public class Player extends Entity {
             if (this.isMovingDown && posY >= 620) {
                 posY = 1;
             }
-        }
     }
 
     public void render(Graphics g) {

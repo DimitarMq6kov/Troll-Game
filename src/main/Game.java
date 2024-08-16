@@ -55,6 +55,9 @@ public class Game implements Runnable {
         double deltaU = 0;
         double deltaF = 0;
 
+        this.panel.requestFocusInWindow();
+        this.panel.setFocusable(true);
+
         while (true) {
             long currentTime = System.nanoTime();
 
