@@ -12,8 +12,6 @@ import static utils.Constants.Directions.*;
 
 public class Player extends Entity {
 
-    private boolean isMovingLeft;
-    private boolean isMovingRight;
     private boolean isMovingUp;
     private boolean isMovingDown;
     private boolean isMoving = false;
@@ -22,17 +20,13 @@ public class Player extends Entity {
     private int animationTick, animationIndex, animationSpeed = 20;
     private BufferedImage[][] animations;
 
-
 //    Global Vars ( already set )
 
-    private int hp = 6;
-    private int atk = 2;
-    private int mp = 10;
-    private int stamina = 20;
     private float movementSpeed = 1.5f;
     private int sprintSpeedMultiplayer = 2;
     private boolean isSprinting = false;
-    private int moveCameraToPlayer = KeyEvent.VK_CLOSE_BRACKET;
+    private float size = 100f;
+    private float reductionSpeed = 0.5f;
 
 
     public Player(float posX, float posY) {
@@ -58,7 +52,7 @@ public class Player extends Entity {
     public void render(Graphics g) {
 
         g.setColor(Color.WHITE);
-        g.fillRect((int) this.posX, (int) this.posY, 15, 100);
+        g.fillRect((int) this.posX, (int) this.posY/* - (int) this.size / 2*/, 15, (int) this.size);
     }
 
     public void update() {
@@ -114,20 +108,6 @@ public class Player extends Entity {
     }
     public void setPosY(float posY) {
         this.posY = posY;
-    }
-
-    public boolean isMovingLeft() {
-        return isMovingLeft;
-    }
-    public void setMovingLeft(boolean movingLeft) {
-        isMovingLeft = movingLeft;
-    }
-
-    public boolean isMovingRight() {
-        return isMovingRight;
-    }
-    public void setMovingRight(boolean movingRight) {
-        isMovingRight = movingRight;
     }
 
     public boolean isMovingUp() {

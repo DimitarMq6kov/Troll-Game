@@ -1,6 +1,8 @@
 package main;
 
+import entity.Ball;
 import entity.Player;
+import utils.Direction;
 
 import java.awt.*;
 
@@ -15,11 +17,13 @@ public class Game implements Runnable {
     private Thread thread;
 
     private Player player;
+    private Ball ball;
 
     public Game() {
 
         this.player = new Player(20, 720 / 2);
-
+        this.ball = new Ball(1200, 720 / 2);
+        this.ball.setDirection(Direction.DOWNRIGHT);
         this.panel = new Panel(player, this);
         this.window = new Window(panel);
 
@@ -35,10 +39,12 @@ public class Game implements Runnable {
 
     private void update() {
         this.player.update();
+        this.ball.move();
     }
 
     public void render(Graphics g) {
         this.player.render(g);
+        this.ball.render(g);
     }
 
     @Override

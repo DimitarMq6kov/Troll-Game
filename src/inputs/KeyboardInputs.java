@@ -21,9 +21,7 @@ public class KeyboardInputs implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-        System.out.println("KeyTyped " + e.getKeyChar());
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -32,14 +30,19 @@ public class KeyboardInputs implements KeyListener {
         switch (key) {
             case KeyEvent.VK_W:
                 this.player.setMovingUp(true);
+                this.player.setMoving(true);
 
                 break;
             case KeyEvent.VK_S:
                 this.player.setMovingDown(true);
+                this.player.setMoving(true);
+
                 break;
         }
 
+
         if(key == KeyEvent.VK_SHIFT && this.player.isMoving()) {
+            System.out.println("shift pressed");
             this.player.setSprinting(true);
         }
     }
@@ -54,11 +57,16 @@ public class KeyboardInputs implements KeyListener {
                 break;
             case KeyEvent.VK_S:
                 this.player.setMovingDown(false);
+
                 break;
         }
 
         if(key == KeyEvent.VK_SHIFT) {
             this.player.setSprinting(false);
+        }
+
+        if(key == KeyEvent.VK_R) {
+
         }
     }
 }
