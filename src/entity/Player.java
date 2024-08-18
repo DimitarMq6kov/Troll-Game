@@ -34,11 +34,21 @@ public class Player extends Entity {
     }
 
     public void move() {
-            if (this.isSprinting && this.isMovingUp) posY -= this.movementSpeed * this.sprintSpeedMultiplayer;
-            else if (isMovingUp) posY -= this.movementSpeed;
+            if (this.isSprinting) {
+                reductionSpeed = 1f;
+            }
 
-            if (this.isSprinting && this.isMovingDown) posY += this.movementSpeed * this.sprintSpeedMultiplayer;
-            else if (isMovingDown) posY += this.movementSpeed;
+            if (this.isSprinting && this.isMovingUp) {
+                posY -= this.movementSpeed * this.sprintSpeedMultiplayer;
+            } else if (isMovingUp) {
+                posY -= this.movementSpeed;
+            }
+
+            if (this.isSprinting && this.isMovingDown) {
+                posY += this.movementSpeed * this.sprintSpeedMultiplayer;
+            } else if (isMovingDown) {
+                posY += this.movementSpeed;
+            }
 
             if (this.isMovingUp && posY <= 0) {
                 posY = 629;
@@ -47,12 +57,18 @@ public class Player extends Entity {
             if (this.isMovingDown && posY >= 620) {
                 posY = 1;
             }
+
+            if((isMovingUp || isMovingDown) && size >= 30) {
+                size -= reductionSpeed / 2;
+            } else if (size < 30) {
+                size = 30;
+            }
     }
 
     public void render(Graphics g) {
 
-        g.setColor(Color.WHITE);
-        g.fillRect((int) this.posX, (int) this.posY/* - (int) this.size / 2*/, 15, (int) this.size);
+        g.setColor(new Color(255, 255, 255));
+        g.fillRect((int) this.posX, (int) this.posY, 15, (int) this.size);
     }
 
     public void update() {
@@ -138,6 +154,14 @@ public class Player extends Entity {
 
     public void setSprinting(boolean sprinting) {
         isSprinting = sprinting;
+    }
+
+    public float getSize() {
+        return size;
+    }
+
+    public void setSize(float size) {
+        this.size = size;
     }
 
     //endregion

@@ -1,5 +1,6 @@
 package main;
 
+import entity.Ball;
 import entity.Player;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
@@ -13,11 +14,13 @@ public class Panel extends JPanel {
 
     private Player player;
     private Game game;
+    private Ball ball;
 
-    public Panel(Player player, Game game) {
+    public Panel(Player player, Game game, Ball ball) {
 
         this.player = player;
         this.game = game;
+        this.ball = ball;
 
         this.mouseInputs = new MouseInputs();
         addKeyListener(new KeyboardInputs(this));
@@ -43,5 +46,8 @@ public class Panel extends JPanel {
 
     public Player getPlayer() {
         return this.player;
+    }
+    public Ball getBall() {
+        return this.ball;
     }
 }

@@ -1,5 +1,6 @@
 package inputs;
 
+import entity.Ball;
 import entity.Player;
 import main.Panel;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class KeyboardInputs implements KeyListener {
 
     private Panel panel;
+    private Ball ball;
     private Player player;
 
     private List<Integer> pressedKeys = new ArrayList<>();
@@ -18,6 +20,7 @@ public class KeyboardInputs implements KeyListener {
     public KeyboardInputs(Panel panel) {
         this.panel = panel;
         this.player = panel.getPlayer();
+        this.ball = panel.getBall();
     }
 
     @Override
@@ -66,7 +69,9 @@ public class KeyboardInputs implements KeyListener {
         }
 
         if(key == KeyEvent.VK_R) {
-
+            this.player.setPosY((player.getPosY() - (100 - player.getSize()) / 2));
+            this.player.setSize(100f);
+            this.ball.setBallSpeed(ball.getBallSpeed() + 3f);
         }
     }
 }

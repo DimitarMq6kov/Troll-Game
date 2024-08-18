@@ -11,7 +11,7 @@ public class Window extends JFrame {
         this.panel = panel;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Troll main.Game");
+        setTitle("Troll Game");
 
         panel.setBackground(new Color(26, 29, 36));
 

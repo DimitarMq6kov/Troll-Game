@@ -24,7 +24,7 @@ public class Game implements Runnable {
         this.player = new Player(20, 720 / 2);
         this.ball = new Ball(1200, 720 / 2);
         this.ball.setDirection(Direction.DOWNRIGHT);
-        this.panel = new Panel(player, this);
+        this.panel = new Panel(player, this, ball);
         this.window = new Window(panel);
 
         this.panel.setFocusable(true);

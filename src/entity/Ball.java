@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Ball extends Entity {
 
-    private float ballSpeed = 2f;
+    private float ballSpeed = 3f;
     private Random rand = new Random();
     private Direction direction;
     public Ball (float posX, float posY) {
@@ -66,6 +66,10 @@ public class Ball extends Entity {
 
     public float getBallSpeed() {
         return ballSpeed;
+    }
+
+    public void setBallSpeed(float ballSpeed) {
+        this.ballSpeed = ballSpeed;
     }
 
     public void setDirection(Direction direction) {
