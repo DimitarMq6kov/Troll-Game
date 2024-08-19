@@ -2,7 +2,7 @@
   <artifact type="jar" name="jaba2:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/jaba2_jar</output-path>
     <root id="archive" name="jaba2.jar">
-      <element id="module-output" name="jaba2" />
+      <element id="module-output" name="Troll-Game" />
     </root>
   </artifact>
 </component>

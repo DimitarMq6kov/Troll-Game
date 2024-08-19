@@ -15,6 +15,16 @@ public class Ball extends Entity {
 
     }
 
+    public boolean areColliding(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
+        if (x1 > x2 && x1 < x2 + w2 && y1 > y2 && y1 < y2 + h2) {
+            if (x1 + w1 > x2 && x1 + w1 < x2 + w2 && y1 + h1 > y2 && y1 + h1 < y2 + h2) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void move() {
         if(posY >= 720) {
             if(Math.floor(Math.random()*2) == 0) {
@@ -60,7 +70,7 @@ public class Ball extends Entity {
 
     public void render(Graphics g) {
 
-        g.setColor(new Color(255, 0, 255));
+        g.setColor(new Color(218, 235, 170));
         g.fillOval((int) posX, (int) posY, 25, 25);
     }
 
