@@ -22,7 +22,7 @@ public class Game implements Runnable {
     public Game() {
 
         this.player = new Player(20, 720 / 2);
-        this.ball = new Ball(1200, 720 / 2);
+        this.ball = new Ball(1200, 720 / 2, this.player);
         this.ball.setDirection(Direction.DOWNRIGHT);
         this.panel = new Panel(player, this, ball);
         this.window = new Window(panel);
@@ -85,7 +85,7 @@ public class Game implements Runnable {
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                System.out.println("FPS: " + frames + " | UPS: " + updates);
+//                System.out.println("FPS: " + frames + " | UPS: " + updates);
                 frames = 0;
                 updates = 0;
             }

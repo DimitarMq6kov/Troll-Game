@@ -51,10 +51,10 @@ public class Player extends Entity {
             }
 
             if (this.isMovingUp && posY <= 0) {
-                posY = 629;
+                posY = 719 - size;
             }
 
-            if (this.isMovingDown && posY >= 620) {
+            if (this.isMovingDown && posY >= 720 - this.size) {
                 posY = 1;
             }
 
@@ -75,57 +75,7 @@ public class Player extends Entity {
         this.move();
     }
 
-    private void loadAnimations() {
-        InputStream inputStream = getClass().getResourceAsStream("/images/player_sprites.png");
-        this.animations = new BufferedImage[12][16];
-
-        try {
-            BufferedImage img = ImageIO.read(inputStream);
-
-            for (int i = 0; i < this.animations.length; i++)
-                for (int j = 0; j < this.animations[i].length; j++)
-                    this.animations[i][j] = img.getSubimage(j * 128, i * 128, 128, 128);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    private void setAnimation() {
-        if (this.isSprinting && this.isMoving) this.playerAction = RUNNING;
-        else if (this.isMoving) this.playerAction = WALKING;
-        else this.playerAction = IDLE;
-    }
-
-    private void updateAnimationTick() {
-        this.animationTick++;
-        if (this.animationTick >= this.animationSpeed){
-            this.animationTick = 0;
-            this.animationIndex++;
-            if (this.animationIndex >= GetSpriteAmount(this.playerAction))
-                this.animationIndex = 0;
-        }
-    }
-
     //region get/set region
-    public float getPosX() {
-        return this.posX;
-    }
-    public void setPosX(float posX) {
-        this.posX = posX;
-    }
-
-    public float getPosY() {
-        return posY;
-    }
-    public void setPosY(float posY) {
-        this.posY = posY;
-    }
-
     public boolean isMovingUp() {
         return isMovingUp;
     }
